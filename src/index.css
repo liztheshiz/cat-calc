@@ -2,9 +2,13 @@
 
 body {
     margin: 0;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Comfortaa', sans-serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-family: 'Comfortaa', sans-serif !important;
 }
 
 code {
