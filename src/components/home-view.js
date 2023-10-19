@@ -1,7 +1,7 @@
-function Home() {
+function HomeView() {
     return (
-        <div className="uk-container uk-container-large">
-            <h1>Cat Calc</h1>
+        <div className="uk-container uk-container-small">
+            <h1 className="uk-heading-large uk-margin-top">Cat Calc</h1>
             <form className="uk-form-horizontal uk-margin-large">
                 <div className="uk-margin">
                     <label className="uk-form-label" for="cat-types">Select a cat profile:</label>
@@ -19,8 +19,9 @@ function Home() {
                     <input className="uk-input uk-form-width-small" id="cat-weight" type="number"></input>
                 </div>
             </form>
+            <button class="uk-button uk-button-secondary">Calculate</button>
         </div>
     );
 }
 
-export default Home;
+export default HomeView;
