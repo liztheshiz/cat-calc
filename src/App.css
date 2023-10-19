@@ -14,6 +14,12 @@
     color: white;
 }
 
+.home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 48px;
+}
+
 .footer {
     text-align: center;
     width: 100%;
