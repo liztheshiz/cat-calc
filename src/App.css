@@ -14,22 +14,6 @@
     color: white;
 }
 
-.home-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 48px;
-}
-
-@media all and (max-width: 800px) {
-    .home-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .home-grid>div:nth-child(2) {
-        margin-top: 0 !important;
-    }
-}
-
 .footer {
     text-align: center;
     width: 100%;

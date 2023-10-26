@@ -1,8 +1,8 @@
 function HomeView() {
     return (
         <div className="home uk-container uk-container-small">
-            <div className="home-grid uk-child-width-expand@s uk-align-center uk-margin-xlarge-top">
-                <div>
+            <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true">
+                <div className="uk-width-1-2">
                     <h1 className="uk-heading-large">Cat Calc</h1>
                     <p className="uk-margin">
                         Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
@@ -11,7 +11,7 @@ function HomeView() {
                         and weight to calculate its ideal daily calories.
                     </p>
                 </div>
-                <div className="uk-margin-xlarge-top">
+                <div className="uk-width-1-2 uk-margin-auto-vertical">
                     <form className="uk-form-horizontal cat-form">
                         <div className="uk-margin">
                             <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
@@ -26,7 +26,9 @@ function HomeView() {
                         </div>
                         <div className="uk-margin">
                             <label className="uk-form-label" htmlFor="cat-weight">Enter your cat's weight:</label>
-                            <input className="uk-input uk-form-width-small" id="cat-weight" type="number"></input>
+                            <div className="uk-form-controls">
+                                <input className="uk-input uk-form-width-small" id="cat-weight" type="number"></input>
+                            </div>
                         </div>
                     </form>
                     <button form="cat-form" className="uk-button uk-button-secondary">Calculate</button>
