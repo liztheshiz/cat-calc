@@ -14,7 +14,7 @@ function HomeView() {
                 <div className="uk-margin-xlarge-top">
                     <form className="uk-form-horizontal cat-form">
                         <div className="uk-margin">
-                            <label className="uk-form-label" for="cat-types">Select a cat profile:</label>
+                            <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
                             <div className="uk-form-controls">
                                 <select className="uk-select uk-form-width-large" name="cat-types" id="cat-types">
                                     <option value="typical-spayed">Typical, spayed/neutered</option>
@@ -25,7 +25,7 @@ function HomeView() {
                             </div>
                         </div>
                         <div className="uk-margin">
-                            <label className="uk-form-label" for="cat-weight">Enter your cat's weight:</label>
+                            <label className="uk-form-label" htmlFor="cat-weight">Enter your cat's weight:</label>
                             <input className="uk-input uk-form-width-small" id="cat-weight" type="number"></input>
                         </div>
                     </form>
