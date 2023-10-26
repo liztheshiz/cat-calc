@@ -1,6 +1,23 @@
+import React, { useState, useEffect } from "react";
+
 function HomeView() {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
         <div className="home uk-container uk-container-small">
+            <p>{width}</p>
             <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true">
                 <div className="uk-width-1-2">
                     <h1 className="uk-heading-large">Cat Calc</h1>
@@ -10,8 +27,6 @@ function HomeView() {
                         friend simply watching its figure? You are in the right place! Enter your cat's profile
                         and weight to calculate its ideal daily calories.
                     </p>
-                </div>
-                <div className="uk-width-1-2 uk-margin-auto-vertical">
                     <form className="uk-form-horizontal cat-form">
                         <div className="uk-margin">
                             <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
