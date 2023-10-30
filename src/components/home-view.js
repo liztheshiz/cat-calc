@@ -3,9 +3,22 @@ import React, { useState, useEffect } from "react";
 function HomeView() {
     const [width, setWidth] = useState(window.innerWidth);
 
+    const blurbElement = document.getElementById('cat-blurb');
+
     useEffect(() => {
         const handleResize = () => {
             setWidth(window.innerWidth);
+
+            if (window.innerWidth < 1599) {
+                // smaller than xl screens
+            } else if (window.innerWidth < 1199) {
+                // smaller than l screens
+            } else if (window.innerWidth < 959) {
+                // smaller than m screens
+                blurbElement.classList.add('uk-text-small')
+            } else if (window.innerWidth < 639) {
+                // smaller than s screens
+            }
         };
 
         window.addEventListener("resize", handleResize);
@@ -19,9 +32,11 @@ function HomeView() {
         <div className="home uk-container uk-container-small">
             <p>{width}</p>
             <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true">
-                <div className="uk-width-1-2">
-                    <h1 className="uk-heading-large">Cat Calc</h1>
-                    <p className="uk-margin">
+                <div className="uk-width-2-5@m uk-width-1-3 uk-margin-auto-vertical">
+                    <h1 className="uk-heading-2xlarge cat-app-title">Cat Calc</h1>
+                </div>
+                <div className="uk-width-3-5@m uk-width-2-3 uk-margin-auto-vertical">
+                    <p id="cat-blurb" className="uk-margin responsive-text">
                         Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
                         bowl and letting it choose how much it wants to eat and now it's fat? Is your feline
                         friend simply watching its figure? You are in the right place! Enter your cat's profile

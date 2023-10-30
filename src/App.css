@@ -4,6 +4,13 @@
     background-color: #76c4db;
 }
 
+
+
+/* Ensures each word on new line */
+.cat-app-title {
+    word-spacing: 100vw;
+}
+
 .header {
     background-color: #282c34;
     height: 80px;
