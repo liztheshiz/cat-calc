@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function HomeView() {
     const [width, setWidth] = useState(window.innerWidth);
+    const [catWeight, setCatWeight] = useState(0);
     const [portionSize, setPortionSize] = useState(0);
     const [stepTwoVisible, setStepTwoVisible] = useState(false);
 
@@ -30,12 +31,23 @@ function HomeView() {
         };
     }, []);
 
-    const calculatePortion = () => {
-        // Empty function to be executed on button click
+    const getPortionSize = () => {
+        const catType = document.getElementById("cat-types").value;
+        console.log(catType);
+        console.log(catWeight);
+        if (catType == "typical-spayed") {
+            return (267.653 - 226.342 * catWeight ** 0.0279704) * catWeight;
+        } else if (catType == "typical-intact") {
+            return (272.181 - 224.12 * catWeight ** 0.0322764) * catWeight;
+        } else if (catType == "typical-gain-prone") {
+            return (217.056 - 182.63 * catWeight ** 0.028633) * catWeight;
+        } else if (catType == "overweight") {
+            return (160.762 - 133.164 * catWeight ** 0.0314387) * catWeight;
+        }
     };
 
     const handleCalculate = () => {
-        calculatePortion();
+        setPortionSize(getPortionSize());
         setStepTwoVisible(true);
     };
 
@@ -69,7 +81,7 @@ function HomeView() {
                             <div className="uk-margin">
                                 <label className="uk-form-label" htmlFor="cat-weight">Enter your cat's weight:</label>
                                 <div className="uk-form-controls">
-                                    <input className="uk-input uk-form-width-small" id="cat-weight" type="number"></input>
+                                    <input className="uk-input uk-form-width-small" id="cat-weight" type="number" onChange={evt => setCatWeight(evt.target.value)}></input>
                                 </div>
                             </div>
                         </form>
@@ -78,7 +90,7 @@ function HomeView() {
                 </div>
             </div>
             {stepTwoVisible && <div className="uk-container uk-container-small">
-                <p>Your cat's ideal portion size is: <span className="uk-text-bold">{portionSize}</span></p>
+                <p>Your cat's ideal portion size is around <span className="uk-text-bold">{parseInt(portionSize)} kcal/day</span></p>
             </div>}
         </>
     );
