@@ -2,6 +2,7 @@
     min-height: 100vh;
     position: relative;
     background-color: #76c4db;
+    width: 100%;
 }
 
 
@@ -23,7 +24,7 @@
 
 .footer {
     text-align: center;
-    width: 100%;
+    max-width: 100%;
     position: absolute;
     bottom: 0;
     padding: 16px;
