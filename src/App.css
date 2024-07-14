@@ -1,8 +1,15 @@
+body {
+    box-sizing: border-box;
+    height: 100%;
+}
+
 .App {
     min-height: 100vh;
     position: relative;
     background-color: #76c4db;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -24,8 +31,5 @@
 
 .footer {
     text-align: center;
-    max-width: 100%;
-    position: absolute;
-    bottom: 0;
     padding: 16px;
 }
