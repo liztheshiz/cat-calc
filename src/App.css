@@ -43,6 +43,15 @@ body {
     margin-left: 200px;
 }
 
+a {
+    color: #4d78a3;
+}
+
+a:hover,
+a:focus {
+    color: #3e6185;
+}
+
 /* UK Overrides */
 
 .uk-grid {
