@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function HomeView() {
+    const [catType, setCatType] = useState('typical-spayed');
     const [catWeight, setCatWeight] = useState(0);
     const [portionSize, setPortionSize] = useState(0);
     const [stepTwoVisible, setStepTwoVisible] = useState(false);
@@ -50,8 +51,6 @@ function HomeView() {
     }, []);
 
     const getPortionSize = () => {
-        const catType = document.getElementById("cat-types").value;
-
         if (catType == "typical-spayed") {
             return (267.653 - 226.342 * catWeight ** 0.0279704) * catWeight;
         } else if (catType == "typical-intact") {
@@ -84,9 +83,9 @@ function HomeView() {
                         </p>
                         <form id="cat-form" className="uk-form-horizontal">
                             <div className="uk-margin">
-                                <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
+                                <label className="uk-form-label" htmlFor="cat-type">Select a cat profile:</label>
                                 <div className="uk-form-controls uk-margin-remove-left">
-                                    <select className="uk-select uk-form-width-medium input-element" name="cat-types" id="cat-types">
+                                    <select className="uk-select uk-form-width-medium input-element" name="cat-type" id="cat-type" onChange={evt => setCatType(evt.target.value)}>
                                         <option value="typical-spayed">Typical, spayed/neutered</option>
                                         <option value="typical-intact">Typial, intact</option>
                                         <option value="typical-gain-prone">Typical, weight-gain prone</option>
