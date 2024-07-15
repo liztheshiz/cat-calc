@@ -8,7 +8,8 @@ function HomeView() {
     useEffect(() => {
         const blurbElement = document.getElementById('cat-blurb');
         const gridElement = document.getElementById('home-grid');
-        console.log(blurbElement);
+        const inputElements = document.querySelectorAll('.input-element');
+        const titleElement = document.getElementById('cat-app-title');
 
         const handleResize = () => {
             if (window.innerWidth < 639) {
@@ -16,10 +17,16 @@ function HomeView() {
                 gridElement.classList.remove('uk-margin-xlarge-top');
                 gridElement.classList.add('uk-margin-medium-top');
                 blurbElement.classList.add('uk-text-small');
+                inputElements.forEach((inputElement) => inputElement.classList.add('uk-form-small'));
+                titleElement.classList.remove('uk-heading-2xlarge');
+                titleElement.classList.add('uk-heading-xlarge');
             } else {
                 gridElement.classList.add('uk-margin-xlarge-top');
                 gridElement.classList.remove('uk-margin-medium-top');
                 blurbElement.classList.remove('uk-text-small');
+                inputElements.forEach((inputElement) => inputElement.classList.remove('uk-form-small'));
+                titleElement.classList.add('uk-heading-2xlarge');
+                titleElement.classList.remove('uk-heading-xlarge');
             }
 
             if (window.innerWidth < 959) {
@@ -44,8 +51,7 @@ function HomeView() {
 
     const getPortionSize = () => {
         const catType = document.getElementById("cat-types").value;
-        console.log(catType);
-        console.log(catWeight);
+
         if (catType == "typical-spayed") {
             return (267.653 - 226.342 * catWeight ** 0.0279704) * catWeight;
         } else if (catType == "typical-intact") {
@@ -67,7 +73,7 @@ function HomeView() {
             <div className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
                 <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true" id="home-grid">
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-2-5@m uk-width-1-2@l">
-                        <h1 className="uk-heading-2xlarge cat-app-title">Cat Calc</h1>
+                        <h1 id="cat-app-title" className="uk-heading-2xlarge">Cat Calc</h1>
                     </div>
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-1-2@l">
                         <p id="cat-blurb" className="uk-margin">
@@ -76,11 +82,11 @@ function HomeView() {
                             friend simply watching its figure? You are in the right place! Enter your cat's profile
                             and weight to calculate its ideal daily calories.
                         </p>
-                        <form className="uk-form-horizontal cat-form">
+                        <form id="cat-form" className="uk-form-horizontal">
                             <div className="uk-margin">
                                 <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
                                 <div className="uk-form-controls">
-                                    <select className="uk-select uk-form-width-large" name="cat-types" id="cat-types">
+                                    <select className="uk-select uk-form-width-medium input-element" name="cat-types" id="cat-types">
                                         <option value="typical-spayed">Typical, spayed/neutered</option>
                                         <option value="typical-intact">Typial, intact</option>
                                         <option value="typical-gain-prone">Typical, weight-gain prone</option>
@@ -91,11 +97,11 @@ function HomeView() {
                             <div className="uk-margin">
                                 <label className="uk-form-label" htmlFor="cat-weight">Enter your cat's weight:</label>
                                 <div className="uk-form-controls">
-                                    <input className="uk-input uk-form-width-small" id="cat-weight" type="number" onChange={evt => setCatWeight(evt.target.value)}></input>
+                                    <input className="uk-input uk-form-width-small input-element" id="cat-weight" type="number" onChange={evt => setCatWeight(evt.target.value)}></input>
                                 </div>
                             </div>
                         </form>
-                        <button form="cat-form" className="uk-button uk-button-secondary" onClick={handleCalculate}>Calculate</button>
+                        <button className="uk-button uk-button-secondary" onClick={handleCalculate}>Calculate</button>
                     </div>
                 </div>
             </div>

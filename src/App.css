@@ -35,7 +35,7 @@ body {
 }
 
 /* Ensures each word on new line */
-.cat-app-title {
+#cat-app-title {
     word-spacing: 100vw;
 }
 
@@ -43,4 +43,8 @@ body {
 
 .uk-grid {
     justify-content: center;
+}
+
+select.uk-form-width-medium {
+    width: 320px;
 }
