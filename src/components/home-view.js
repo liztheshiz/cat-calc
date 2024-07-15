@@ -53,13 +53,13 @@ function HomeView() {
 
     return (
         <>
-            <div className="home uk-container uk-container-small">
+            <div className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
                 <p>{width}</p>
                 <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true">
-                    <div className="uk-width-2-5@m uk-width-1-3 uk-margin-auto-vertical">
+                    <div className="uk-width-1-1 uk-width-3-5@s uk-width-2-5@m uk-width-1-2@l">
                         <h1 className="uk-heading-2xlarge cat-app-title">Cat Calc</h1>
                     </div>
-                    <div className="uk-width-3-5@m uk-width-2-3 uk-margin-auto-vertical">
+                    <div className="uk-width-1-1 uk-width-3-5@s uk-width-1-2@l">
                         <p id="cat-blurb" className="uk-margin responsive-text">
                             Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
                             bowl and letting it choose how much it wants to eat and now it's fat? Is your feline
