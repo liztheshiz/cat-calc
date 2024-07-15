@@ -15,11 +15,8 @@ body {
     align-items: center;
 }
 
-
-
-/* Ensures each word on new line */
-.cat-app-title {
-    word-spacing: 100vw;
+.home {
+    max-width: calc(100% - 56px);
 }
 
 .header {
@@ -35,4 +32,15 @@ body {
 .footer {
     text-align: center;
     padding: 16px;
+}
+
+/* Ensures each word on new line */
+.cat-app-title {
+    word-spacing: 100vw;
+}
+
+/* UK Overrides */
+
+.uk-grid {
+    justify-content: center;
 }
