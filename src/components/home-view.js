@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from "react";
 
 function HomeView() {
-    const [width, setWidth] = useState(window.innerWidth);
     const [catWeight, setCatWeight] = useState(0);
     const [portionSize, setPortionSize] = useState(0);
     const [stepTwoVisible, setStepTwoVisible] = useState(false);
 
-    const blurbElement = document.getElementById('cat-blurb');
-
     useEffect(() => {
+        const blurbElement = document.getElementById('cat-blurb');
+        const gridElement = document.getElementById('home-grid');
+        console.log(blurbElement);
+
         const handleResize = () => {
-            setWidth(window.innerWidth);
+            if (window.innerWidth < 639) {
+                // smaller than s screens
+                gridElement.classList.remove('uk-margin-xlarge-top');
+                gridElement.classList.add('uk-margin-medium-top');
+                blurbElement.classList.add('uk-text-small');
+            } else {
+                gridElement.classList.add('uk-margin-xlarge-top');
+                gridElement.classList.remove('uk-margin-medium-top');
+                blurbElement.classList.remove('uk-text-small');
+            }
+
+            if (window.innerWidth < 959) {
+                // smaller than m screens   
+            }
+
+            if (window.innerWidth < 1199) {
+                // smaller than l screens
+            }
 
             if (window.innerWidth < 1599) {
                 // smaller than xl screens
-            } else if (window.innerWidth < 1199) {
-                // smaller than l screens
-            } else if (window.innerWidth < 959) {
-                // smaller than m screens
-                blurbElement.classList.add('uk-text-small')
-            } else if (window.innerWidth < 639) {
-                // smaller than s screens
             }
         };
 
@@ -54,13 +65,12 @@ function HomeView() {
     return (
         <>
             <div className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
-                <p>{width}</p>
-                <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true">
+                <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true" id="home-grid">
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-2-5@m uk-width-1-2@l">
                         <h1 className="uk-heading-2xlarge cat-app-title">Cat Calc</h1>
                     </div>
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-1-2@l">
-                        <p id="cat-blurb" className="uk-margin responsive-text">
+                        <p id="cat-blurb" className="uk-margin">
                             Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
                             bowl and letting it choose how much it wants to eat and now it's fat? Is your feline
                             friend simply watching its figure? You are in the right place! Enter your cat's profile
