@@ -30,7 +30,7 @@ function HomeView() {
             }
 
             if (window.innerWidth < 959) {
-                // smaller than m screens   
+                // smaller than m screens
             }
 
             if (window.innerWidth < 1199) {
@@ -85,7 +85,7 @@ function HomeView() {
                         <form id="cat-form" className="uk-form-horizontal">
                             <div className="uk-margin">
                                 <label className="uk-form-label" htmlFor="cat-types">Select a cat profile:</label>
-                                <div className="uk-form-controls">
+                                <div className="uk-form-controls uk-margin-remove-left">
                                     <select className="uk-select uk-form-width-medium input-element" name="cat-types" id="cat-types">
                                         <option value="typical-spayed">Typical, spayed/neutered</option>
                                         <option value="typical-intact">Typial, intact</option>
@@ -96,12 +96,12 @@ function HomeView() {
                             </div>
                             <div className="uk-margin">
                                 <label className="uk-form-label" htmlFor="cat-weight">Enter your cat's weight:</label>
-                                <div className="uk-form-controls">
+                                <div className="uk-form-controls uk-margin-remove-left">
                                     <input className="uk-input uk-form-width-small input-element" id="cat-weight" type="number" onChange={evt => setCatWeight(evt.target.value)}></input>
                                 </div>
                             </div>
                         </form>
-                        <button className="uk-button uk-button-secondary" onClick={handleCalculate}>Calculate</button>
+                        <button id="calc-button" className="uk-button uk-button-secondary uk-margin-top" onClick={handleCalculate}>Calculate</button>
                     </div>
                 </div>
             </div>
