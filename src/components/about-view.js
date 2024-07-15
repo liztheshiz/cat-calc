@@ -16,7 +16,7 @@ function AboutView() {
                     <br></br><br></br>
                     This website was built using <a target="_blank" href="https://react.dev/">React</a> and <a target="_blank" href="https://getuikit.com/">UIKit</a>.
                 </p>
-                <h2 className="uk-margin-small-bottom">About Liz Stone</h2>
+                <h2 className="uk-margin-small-bottom">About the Developer</h2>
                 <p>
                     Liz Stone is a web and software developer with a passion for beatuiful, functional applications, and cats. She is currently employed as a
                     software developer and data analyst, but enjoys creating small apps in her spare time. You can find her other work at her <a target="_blank"
