@@ -11,6 +11,7 @@ function HomeView() {
         const gridElement = document.getElementById('home-grid');
         const inputElements = document.querySelectorAll('.input-element');
         const titleElement = document.getElementById('cat-app-title');
+        const calcButton = document.getElementById('calc-button');
 
         const handleResize = () => {
             if (window.innerWidth < 639) {
@@ -32,16 +33,33 @@ function HomeView() {
 
             if (window.innerWidth < 959) {
                 // smaller than m screens
+                calcButton.classList.add('uk-margin-small-top');
+                calcButton.classList.remove('margin-left-200');
+            } else {
+                calcButton.classList.remove('uk-margin-small-top');
+                calcButton.classList.add('margin-left-200');
             }
 
             if (window.innerWidth < 1199) {
                 // smaller than l screens
+                if (window.innerWidth >= 959) {
+                    titleElement.classList.add('uk-margin-large-top');
+                    calcButton.classList.remove('uk-margin-small-top');
+                } else {
+                    titleElement.classList.remove('uk-margin-large-top');
+                    calcButton.classList.add('uk-margin-small-top');
+                }
+            } else {
+                titleElement.classList.remove('uk-margin-large-top');
+                calcButton.classList.add('uk-margin-small-top');
             }
 
             if (window.innerWidth < 1599) {
                 // smaller than xl screens
             }
         };
+
+        handleResize();
 
         window.addEventListener("resize", handleResize);
 
@@ -70,12 +88,14 @@ function HomeView() {
     return (
         <>
             <div className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
-                <div className="uk-grid-divider uk-margin-xlarge-top" uk-grid="true" id="home-grid">
+                <div className="uk-grid-divider" uk-grid="true" id="home-grid">
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-2-5@m uk-width-1-2@l">
-                        <h1 id="cat-app-title" className="uk-heading-2xlarge">Cat Calc</h1>
+                        <div className="uk-align-right@m uk-width-medium@s uk-width-large@l">
+                            <h1 id="cat-app-title" className="uk-margin-remove-bottom">Cat Calc</h1>
+                        </div>
                     </div>
                     <div className="uk-width-1-1 uk-width-3-5@s uk-width-1-2@l">
-                        <p id="cat-blurb" className="uk-margin">
+                        <p id="cat-blurb" className="uk-margin uk-width-large@m">
                             Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
                             bowl and letting it choose how much it wants to eat and now it's fat? Is your feline
                             friend simply watching its figure? You are in the right place! Enter your cat's profile
@@ -89,7 +109,7 @@ function HomeView() {
                                         <option value="typical-spayed">Typical, spayed/neutered</option>
                                         <option value="typical-intact">Typial, intact</option>
                                         <option value="typical-gain-prone">Typical, weight-gain prone</option>
-                                        <option value="overweight">Overweight, in need of weight loss</option>
+                                        <option value="overweight">Overweight</option>
                                     </select>
                                 </div>
                             </div>
@@ -100,7 +120,7 @@ function HomeView() {
                                 </div>
                             </div>
                         </form>
-                        <button id="calc-button" className="uk-button uk-button-secondary uk-margin-top" onClick={handleCalculate}>Calculate</button>
+                        <button id="calc-button" className="uk-button uk-button-secondary" onClick={handleCalculate}>Calculate</button>
                     </div>
                 </div>
             </div>
