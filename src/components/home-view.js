@@ -8,10 +8,13 @@ function HomeView() {
 
     useEffect(() => {
         const blurbElement = document.getElementById('cat-blurb');
+        const homeElement = document.getElementById('home');
         const gridElement = document.getElementById('home-grid');
+        const gridItems = document.querySelectorAll('.home-grid__item');
         const inputElements = document.querySelectorAll('.input-element');
         const titleElement = document.getElementById('cat-app-title');
         const calcButton = document.getElementById('calc-button');
+        const resultElement = document.getElementById('result-blurb');
 
         const handleResize = () => {
             if (window.innerWidth < 639) {
@@ -19,6 +22,7 @@ function HomeView() {
                 gridElement.classList.remove('uk-margin-xlarge-top');
                 gridElement.classList.add('uk-margin-medium-top');
                 blurbElement.classList.add('uk-text-small');
+                resultElement.classList.add('uk-text-small');
                 inputElements.forEach((inputElement) => inputElement.classList.add('uk-form-small'));
                 titleElement.classList.remove('uk-heading-2xlarge');
                 titleElement.classList.add('uk-heading-xlarge');
@@ -26,6 +30,7 @@ function HomeView() {
                 gridElement.classList.add('uk-margin-xlarge-top');
                 gridElement.classList.remove('uk-margin-medium-top');
                 blurbElement.classList.remove('uk-text-small');
+                resultElement.classList.remove('uk-text-small');
                 inputElements.forEach((inputElement) => inputElement.classList.remove('uk-form-small'));
                 titleElement.classList.add('uk-heading-2xlarge');
                 titleElement.classList.remove('uk-heading-xlarge');
@@ -35,9 +40,24 @@ function HomeView() {
                 // smaller than m screens
                 calcButton.classList.add('uk-margin-small-top');
                 calcButton.classList.remove('margin-left-200');
+                if (window.innerWidth >= 639) {
+                    homeElement.classList.remove('uk-container-small');
+                    gridElement.classList.add('uk-width-xlarge-custom');
+                    gridElement.classList.add('uk-align-center');
+                    gridItems.forEach((item) => item.classList.add('uk-padding-remove-left'));
+                } else {
+                    homeElement.classList.add('uk-container-small');
+                    gridElement.classList.remove('uk-width-xlarge-custom');
+                    gridElement.classList.remove('uk-align-center');
+                    gridItems.forEach((item) => item.classList.remove('uk-padding-remove-left'));
+                }
             } else {
                 calcButton.classList.remove('uk-margin-small-top');
                 calcButton.classList.add('margin-left-200');
+                homeElement.classList.add('uk-container-small');
+                gridElement.classList.remove('uk-width-xlarge-custom');
+                gridElement.classList.remove('uk-align-center');
+                gridItems.forEach((item) => item.classList.remove('uk-padding-remove-left'));
             }
 
             if (window.innerWidth < 1199) {
@@ -87,19 +107,19 @@ function HomeView() {
 
     return (
         <>
-            <div className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
+            <div id="home" className="home uk-container uk-container-small uk-margin-remove-left uk-margin-remove-right uk-margin-auto-left@s uk-margin-auto-right@s">
                 <div className="uk-grid-divider" uk-grid="true" id="home-grid">
-                    <div className="uk-width-1-1 uk-width-3-5@s uk-width-2-5@m uk-width-1-2@l">
+                    <div className="uk-width-1-1 uk-width-2-5@m uk-width-1-2@l home-grid__item">
                         <div className="uk-align-right@m uk-width-medium@s uk-width-large@l">
                             <h1 id="cat-app-title" className="uk-margin-remove-bottom">Cat Calc</h1>
                         </div>
                     </div>
-                    <div className="uk-width-1-1 uk-width-3-5@s uk-width-1-2@l">
+                    <div className="uk-width-1-1 uk-width-3-5@m uk-width-1-2@l home-grid__item">
                         <p id="cat-blurb" className="uk-margin uk-width-large@m">
                             Do you need to re-assess pussy portion sizes? Have you been dumping food into your cat's
-                            bowl and letting it choose how much it wants to eat and now it's fat? Is your feline
-                            friend simply watching its figure? You are in the right place! Enter your cat's profile
-                            and weight to calculate its ideal daily calories.
+                            bowl and letting them choose how much they want to eat and now they're fat? Is your feline
+                            friend simply watching their figure? You are in the right place! Enter your cat's profile
+                            and weight to calculate their ideal daily calories.
                         </p>
                         <form id="cat-form" className="uk-form-horizontal">
                             <div className="uk-margin">
@@ -124,9 +144,17 @@ function HomeView() {
                     </div>
                 </div>
             </div>
-            {stepTwoVisible && <div className="uk-container uk-container-small">
-                <p>Your cat's ideal portion size is around <span className="uk-text-bold">{parseInt(portionSize)} kcal/day</span></p>
-            </div>}
+            <div id="result-blurb" className="uk-margin-xlarge-top uk-container uk-width-xlarge-custom">
+                {stepTwoVisible && <>
+                    <p className="uk-text-center@s">Based on your cat's body type and weight, their ideal portion size is around</p>
+                    <p className="uk-text-bold uk-text-large uk-text-center uk-align-center uk-margin-remove-top uk-border-rounded border-default uk-width-medium">{parseInt(portionSize)} kcal/day</p>
+                    <p className="uk-align-center uk-margin-remove-left uk-margin-remove-right">
+                        Please keep in mind that factors such as age, size, activity level, and health conditions will also affect the ideal amount of calories
+                        that your cat should consume per day. An individual cat's needs can vary <span className="uk-text-bold">as much as 50%</span> in either
+                        direction from the average.
+                    </p>
+                </>}
+            </div>
         </>
     );
 }

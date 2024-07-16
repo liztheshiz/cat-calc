@@ -49,6 +49,10 @@ body {
     margin-left: 200px;
 }
 
+.border-default {
+    border: 2px solid #666;
+}
+
 a {
     color: #4d78a3;
 }
@@ -76,4 +80,17 @@ footer>a:focus {
 
 select.uk-form-width-medium {
     width: 270px;
+}
+
+.uk-width-xlarge-custom {
+    max-width: 680px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+@media screen and (max-width: 959px) and (min-width: 640px) {
+    .uk-grid-divider.uk-grid-stack>.uk-grid-margin::before {
+        top: -30px;
+        left: 0;
+    }
 }
