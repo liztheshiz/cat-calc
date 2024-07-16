@@ -15,6 +15,7 @@ function HomeView() {
         const titleElement = document.getElementById('cat-app-title');
         const calcButton = document.getElementById('calc-button');
         const resultElement = document.getElementById('result-blurb');
+        const resultCalc = document.getElementById('result-calc');
 
         const handleResize = () => {
             if (window.innerWidth < 639) {
@@ -26,6 +27,9 @@ function HomeView() {
                 inputElements.forEach((inputElement) => inputElement.classList.add('uk-form-small'));
                 titleElement.classList.remove('uk-heading-2xlarge');
                 titleElement.classList.add('uk-heading-xlarge');
+                calcButton.classList.add('uk-button-small');
+                resultCalc.classList.add('uk-text-default');
+                resultCalc.classList.remove('uk-text-large');
             } else {
                 gridElement.classList.add('uk-margin-xlarge-top');
                 gridElement.classList.remove('uk-margin-medium-top');
@@ -34,6 +38,9 @@ function HomeView() {
                 inputElements.forEach((inputElement) => inputElement.classList.remove('uk-form-small'));
                 titleElement.classList.add('uk-heading-2xlarge');
                 titleElement.classList.remove('uk-heading-xlarge');
+                calcButton.classList.remove('uk-button-small');
+                resultCalc.classList.remove('uk-text-default');
+                resultCalc.classList.add('uk-text-large');
             }
 
             if (window.innerWidth < 959) {
@@ -147,7 +154,7 @@ function HomeView() {
             <div id="result-blurb" className="uk-margin-xlarge-top uk-container uk-width-xlarge-custom">
                 {stepTwoVisible && <>
                     <p className="uk-text-center@s">Based on your cat's body type and weight, their ideal portion size is around</p>
-                    <p className="uk-text-bold uk-text-large uk-text-center uk-align-center uk-margin-remove-top uk-border-rounded border-default uk-width-medium">{parseInt(portionSize)} kcal/day</p>
+                    <p id="result-calc" className="uk-text-bold uk-text-center uk-align-center uk-margin-remove-top uk-border-rounded border-default uk-width-medium">{parseInt(portionSize)} kcal/day</p>
                     <p className="uk-align-center uk-margin-remove-left uk-margin-remove-right">
                         Please keep in mind that factors such as age, size, activity level, and health conditions will also affect the ideal amount of calories
                         that your cat should consume per day. An individual cat's needs can vary <span className="uk-text-bold">as much as 50%</span> in either
