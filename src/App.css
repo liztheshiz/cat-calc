@@ -94,3 +94,9 @@ select.uk-form-width-medium {
         left: 0;
     }
 }
+
+@media screen and (max-width: 639px) {
+    #result-calc.uk-text-large {
+        font-size: 18px !important;
+    }
+}
