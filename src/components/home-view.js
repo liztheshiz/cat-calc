@@ -142,7 +142,7 @@ function HomeView() {
                                 </div>
                             </div>
                         </form>
-                        <button id="calc-button" className="uk-button uk-button-secondary" onClick={handleCalculate}>Calculate</button>
+                        <a id="calc-button" className="uk-button uk-button-secondary" onClick={handleCalculate} href="#result-calc">Calculate</a>
                     </div>
                 </div>
             </div>
